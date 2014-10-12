@@ -1,0 +1,18 @@
+{
+  "name": "infoService",
+  "version": "0.0.0",
+  "description": "Allows user to enter personal info",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "iot-service"
+  ],
+  "author": "Ryan Gaus <rsg1egoman@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "iot-thing": "latest",
+    "request": "latest"
+  }
+}
