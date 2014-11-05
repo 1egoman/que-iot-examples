@@ -1,4 +1,4 @@
-// iot-thing example code
+// iot-thing switch example code
 // by Ryan Gaus (1egoman)
 // published under the MIT License
 // you must host a iot-server locally on port :8000 for this to work
@@ -22,35 +22,21 @@ r.question("Authkey from backend (only required on first run): ", function(authK
   new iot.thing("127.0.0.1", 8000, {
     key: authKey
   }, {
-    name: "Example Thing",
-    desc: "Prooves that stuff works",
+    name: "Switch",
+    desc: "Turns on and off an item",
     tags: ["sample"],
     data: {
-      message: {
-        value: "Hello World"
-      },
-      showMessage: {
-        value: false,
-        label: "Show message in terminal"
+      state: {
+        value: true,
+        label: "Switch"
       }
     }
   }, function(thing) {
-    // get the thing id, and print it out
-    // console.log("Thing ID is", thing.id);
 
-    // did the user set showMessage to true?
-    thing.data.pull("showMessage", function(val) {
-      if (val.value == true) {
-        // set it to false
-        thing.data.push("showMessage", false);
-
-        // show the message in the console
-        thing.data.pull("message", function(val) {
-          console.log("Output:", val.value);
-        });
-      }
+    // check switch state
+    thing.data.pull("state", function(val) {
+      console.log("Switch is", val.value == true && "on" || "off");
     });
-
 
   }).go();
 
